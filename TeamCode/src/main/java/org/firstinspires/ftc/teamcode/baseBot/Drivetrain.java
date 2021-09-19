@@ -18,7 +18,7 @@ public class Drivetrain {
     public DcMotor lb, lf, rb, rf;
     public ExpansionHubMotor lbBR, lfBR, rbBR, rfBR;
     public ExpansionHubEx expansionHub;
-    public DistanceSensor leftDistance,backDistance, frontDistance;
+//    public DistanceSensor leftDistance,backDistance, frontDistance;
     public Configuration names = new Configuration();
     //Software
     private Telemetry telemetry;
@@ -77,15 +77,15 @@ public class Drivetrain {
         rb.setPower(rightPower);
         rf.setPower(rightPower);
     }
-    double getBackDistance(){
-        return backDistance.getDistance(DistanceUnit.INCH);
-    }
-    double getFrontDistance() {
-        return frontDistance.getDistance(DistanceUnit.INCH);
-    }
-    double getLeftDistance() {
-        return leftDistance.getDistance(DistanceUnit.INCH);
-    }
+//    double getBackDistance(){
+//        return backDistance.getDistance(DistanceUnit.INCH);
+//    }
+//    double getFrontDistance() {
+//        return frontDistance.getDistance(DistanceUnit.INCH);
+//    }
+//    double getLeftDistance() {
+//        return leftDistance.getDistance(DistanceUnit.INCH);
+//    }
     public String getOdometryWheels(){
         return "Front: " + lf.getCurrentPosition() + " Left: " + lb.getCurrentPosition() + " Right: " + rb.getCurrentPosition();
     }
