@@ -25,7 +25,7 @@ public class TestBotTeleOp extends OpMode {
     public void loop() {
         //Drive motor controls
         double lx = -gamepad1.left_stick_x;
-        double ly = gamepad1.left_stick_y;
+        double ly = -gamepad1.left_stick_y;
         double speedMultiplier = 1;
         double rotationMultiplier = .8;
 
