@@ -24,37 +24,35 @@ public class TestBotTeleOp extends OpMode {
 
     public void loop() {
         //Drive motor controls
-        double lx = -gamepad1.left_stick_x;
+        double lx = gamepad1.left_stick_x;
         double ly = -gamepad1.left_stick_y;
         double speedMultiplier = 1;
         double rotationMultiplier = .8;
 
         if(gamepad1.dpad_up){
-            ly=-1;
-            lx=0;
-            speedMultiplier = 0.3;
-        }
-        else if(gamepad1.dpad_down){
             ly=1;
             lx=0;
             speedMultiplier = 0.3;
         }
-        if(gamepad1.dpad_left){
-            lx=1;
-            ly=0;
-            speedMultiplier = 0.6;
+        else if(gamepad1.dpad_down){
+            ly=-1;
+            lx=0;
+            speedMultiplier = 0.3;
         }
-        else if(gamepad1.dpad_right){
+        if(gamepad1.dpad_left){
             lx=-1;
             ly=0;
             speedMultiplier = 0.6;
         }
-
+        else if(gamepad1.dpad_right){
+            lx=1;
+            ly=0;
+            speedMultiplier = 0.6;
+        }
 
         double theta = Math.atan2(lx, ly);
         double v_theta = Math.sqrt(lx * lx + ly * ly);
         double v_rotation = gamepad1.right_stick_x;
-
         myRobot.drive(theta,  speedMultiplier*v_theta, rotationMultiplier*v_rotation);
     }
 
