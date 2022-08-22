@@ -4,6 +4,15 @@ import com.acmerobotics.dashboard.config.Config;
 
 @Config
 public class Constants {
+    // Drive motor
+    public static final double TICKS_PER_REV = 751.8;
+    public static final double CIRCUMFERENCE_IN_INCHES = 100 / 25.4 * Math.PI;
+    public static final double TICKS_PER_INCH = TICKS_PER_REV / CIRCUMFERENCE_IN_INCHES;
+
+    // Autonomous turn PID
+    public static double kR = 0.084; // PID turn kR
+    public static double kD = 0.0072; // PID turn kD
+
     public static double joyStraight = 0.6;
     public static double joyTurn = 0.5;
 
