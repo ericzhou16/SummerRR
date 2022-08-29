@@ -17,10 +17,11 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.baseBot.Drivetrain;
+import org.firstinspires.ftc.teamcode.outreachBot.ClawBot;
 import org.firstinspires.ftc.teamcode.outreachBot.Constants;
 
 public abstract class BaseAutonomousMethods extends LinearOpMode {
-    public Drivetrain myRobot = new Drivetrain();
+    public ClawBot myRobot = new ClawBot();
     FtcDashboard dashboard = FtcDashboard.getInstance();
     TelemetryPacket packet = new TelemetryPacket();
     private Orientation angles;
@@ -35,6 +36,9 @@ public abstract class BaseAutonomousMethods extends LinearOpMode {
     // Initializations
     public void initializeAutonomousDrivetrain(HardwareMap hardwareMap, Telemetry telemetry) {
         myRobot.initializeDriveTrain(hardwareMap, telemetry);
+    }
+    public void initializeAuto(HardwareMap hardwareMap, Telemetry telemetry) {
+        myRobot.initialize(hardwareMap, telemetry);
     }
 
 //    public double autonomousGetAngle() {
