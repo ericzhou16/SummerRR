@@ -29,4 +29,6 @@ public class Constants {
     public static double dpadStraight = 0.15;
     public static double dpadSide = 0.3;
     public static int buttonDelay = 6;
+
+    public static int changeThresh = 128;
 }
