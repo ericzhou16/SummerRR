@@ -31,4 +31,13 @@ public class Constants {
     public static int buttonDelay = 6;
 
     public static int changeThresh = 128;
+    public static int colorThresh = 200;
+    public static int tlx = 0; // Top left x for rectangle
+    public static int tly = 0; // Top left y for rectangle
+    public static int brx = 100; // Bottom right x for rectangle
+    public static int bry = 100; // Bottom right y for rectangle
+
+    public static int leftBoundary = 550; // left side of detection zone
+    public static int rightBoundary = 750; // right side of detection zone
+    public static int middleLine = 618; // detection line y coordinate
 }

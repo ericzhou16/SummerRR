@@ -11,7 +11,6 @@ import org.firstinspires.ftc.teamcode.outreachBot.Constants;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
-import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvCamera;
@@ -57,12 +56,12 @@ public class OpenCVExampleOpMode extends OpMode {
     @Override
     public void loop() {
 //        telemetry.addData("Image Analysis:",pipeline.getAnalysis());
-//        telemetry.addData("Something:", pipeline.getRectA_Analysis());
-        telemetry.addData("Something:", pipeline.getCounter());
+//        telemetry.addData("Image number:", pipeline.getRectA_Analysis());
+        telemetry.addData("Image number:", pipeline.getCounter());
         telemetry.update();
 
         TelemetryPacket pack = new TelemetryPacket();
-        pack.put("Something:", pipeline.getCounter());
+        pack.put("Image number:", pipeline.getCounter());
         dashboard.sendTelemetryPacket(pack);
     }
 
@@ -176,17 +175,19 @@ class SamplePipeline extends OpenCvPipeline {
 
     int detectBlackWhite(Mat input) {
         int counter = 0;
-        int x1 = 0;
-        int x2 = 800;
-        int midy = 800/2;
+        int x1 = Constants.leftBoundary;
+        int x2 = Constants.rightBoundary;
+        int midy = Constants.middleLine;
         for (int j = x1 + 1; j < x2; j++) {
 //            if (input.at(Byte.class, (y2 + y1) / 2, j).getV4c().get_0() - input.at(Byte.class, (y2 + y1) / 2, j - 1).getV4c().get_0() > Constants.changeThresh) {
-            if (input.at(Byte.class, midy, j).getV().byteValue() - input.at(Byte.class, midy, j - 1).getV().byteValue() > Constants.changeThresh) {
+            if ((input.at(Byte.class, midy, j).getV().byteValue() - input.at(Byte.class, midy, j - 1).getV().byteValue()) > Constants.changeThresh) {
                     counter += 1;
             }
         }
         return counter;
     }
+
+
 
     @Override
     public void init(Mat firstFrame) {
@@ -210,10 +211,11 @@ class SamplePipeline extends OpenCvPipeline {
 
         Imgproc.rectangle( // rings
                 input, // Buffer to draw on
-                new Point(0,0), // First point which defines the rectangle
-                new Point(800,800), // Second point which defines the rectangle
+                new Point(Constants.leftBoundary,547), // First point which defines the rectangle
+                new Point(Constants.rightBoundary,689), // Second point which defines the rectangle
                 new Scalar(0,0,255), // The color the rectangle is drawn in
                 2); // Thickness of the rectangle lines
+        Imgproc.line(input, new Point(Constants.leftBoundary, Constants.middleLine), new Point(Constants.rightBoundary, Constants.middleLine), new Scalar(0, 0, 255), 3);
         return input;
     }
 
